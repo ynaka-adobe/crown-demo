@@ -23,7 +23,12 @@ import {
  */
 function buildHeroBlock(main) {
   const h1 = main.querySelector('h1');
-  const picture = main.querySelector('picture');
+  // Only select pictures that are NOT inside a block (div with a class)
+  const pictures = [...main.querySelectorAll('picture')];
+  const picture = pictures.find((pic) => {
+    const parentBlock = pic.closest('div[class]');
+    return !parentBlock || parentBlock === main;
+  }) || null;
   // eslint-disable-next-line no-bitwise
   if (h1 && picture && (h1.compareDocumentPosition(picture) & Node.DOCUMENT_POSITION_PRECEDING)) {
     const section = document.createElement('div');

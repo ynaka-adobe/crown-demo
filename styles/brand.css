@@ -1,0 +1,18 @@
+:root {
+  --heading-font-family: "myriad-pro-semi-condensed", sans-serif;
+  --body-font-family: "myriad-pro", sans-serif;
+  --background-color: #fff;
+  --text-color: #333;
+  --link-color: #333;
+  --link-hover-color: #f58220;
+  --brand-orange: #f58220;
+  --section-padding: 48px;
+  --nav-height: 56px;
+  --content-max-width: 1200px;
+  --heading-size-xxl: 48px;
+  --heading-size-xl: 38px;
+  --heading-size-l: 28px;
+  --heading-size-m: 24px;
+  --heading-size-s: 20px;
+  --heading-size-xs: 16px;
+}

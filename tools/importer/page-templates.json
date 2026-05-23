@@ -1,0 +1,129 @@
+{
+  "metadata": {
+    "projectType": "da"
+  },
+  "templates": [
+    {
+      "name": "homepage",
+      "urls": [
+        "https://www.crown.com/en-us.html"
+      ],
+      "description": "Crown Equipment homepage with hero, product categories, and company information",
+      "blocks": [
+        {
+          "name": "carousel-hero",
+          "instances": [
+            "div.carousel > div.component-carousel"
+          ]
+        },
+        {
+          "name": "tabs-solutions",
+          "instances": [
+            "div.tabcomponent:has(#tabNavWrapper_mainpar_tabcomponent)"
+          ]
+        },
+        {
+          "name": "carousel-product",
+          "instances": [
+            "div.productslider"
+          ]
+        },
+        {
+          "name": "hero-banner",
+          "instances": [
+            "div#height_b5a96252911a489dadcea8c78ea8c5b1"
+          ]
+        },
+        {
+          "name": "cards-icon",
+          "instances": [
+            "div.quadlayout"
+          ]
+        },
+        {
+          "name": "tabs-discover",
+          "instances": [
+            "div.tabcomponent:has(#tabNavWrapper_mainpar_tabcomponent_555109933)"
+          ]
+        }
+      ],
+      "sections": [
+        {
+          "id": "section-1",
+          "name": "Hero Carousel",
+          "selector": "div.carousel",
+          "style": null,
+          "blocks": [
+            "carousel-hero"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "section-2",
+          "name": "Smart Material Handling Solutions",
+          "selector": [
+            "div#height_b356c566b8bb410aac94667eba081824",
+            "div.tabcomponent:has(#tabNavWrapper_mainpar_tabcomponent)"
+          ],
+          "style": null,
+          "blocks": [
+            "tabs-solutions"
+          ],
+          "defaultContent": [
+            "#richtext_mainpar_column_203409334_column1_richtext h1"
+          ]
+        },
+        {
+          "id": "section-3",
+          "name": "Product Slider",
+          "selector": "div.productslider",
+          "style": null,
+          "blocks": [
+            "carousel-product"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "section-4",
+          "name": "Shop Online with Crown",
+          "selector": "div#height_b5a96252911a489dadcea8c78ea8c5b1",
+          "style": null,
+          "blocks": [
+            "hero-banner"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "section-5",
+          "name": "Crown Support",
+          "selector": [
+            "div#height_841456c975cd46bd9f610256598d9d6e",
+            "div.quadlayout"
+          ],
+          "style": null,
+          "blocks": [
+            "cards-icon"
+          ],
+          "defaultContent": [
+            "#richtext_mainpar_column_1394353123_column1_richtext h2"
+          ]
+        },
+        {
+          "id": "section-6",
+          "name": "Discover Crown",
+          "selector": [
+            "div#height_2963baae6c1b48618804f5bcf24db2b1",
+            "div.tabcomponent:has(#tabNavWrapper_mainpar_tabcomponent_555109933)"
+          ],
+          "style": null,
+          "blocks": [
+            "tabs-discover"
+          ],
+          "defaultContent": [
+            "#richtext_mainpar_column_926544579_cop_column1_richtext h2"
+          ]
+        }
+      ]
+    }
+  ]
+}

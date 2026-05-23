@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://www.crown.com/en-us.html",
+  "path": "en-us",
+  "timestamp": "2026-05-23T05:12:43.544Z",
+  "title": "Crown Equipment Corporation | USA | Material Handling",
+  "template": "homepage",
+  "blocks": [
+    "carousel-hero",
+    "tabs-solutions",
+    "carousel-product",
+    "hero-banner",
+    "cards-icon",
+    "tabs-discover"
+  ]
+}

@@ -1,0 +1,259 @@
+/* Block: carousel-hero -- Crown homepage hero carousel */
+
+/* Full-width rotating carousel with dark-overlaid content on left, orange CTA buttons */
+
+/* Full-width wrapper override */
+.carousel-hero-wrapper {
+  max-width: 100% !important;
+  padding: 0 !important;
+}
+
+/* Slides container */
+.carousel-hero .carousel-hero-slides-container {
+  position: relative;
+}
+
+/* Remove list styles and set up horizontal scroll */
+.carousel-hero .carousel-hero-slides,
+.carousel-hero .carousel-hero-slide-indicators {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.carousel-hero .carousel-hero-slides {
+  display: flex;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  overflow: scroll clip;
+}
+
+.carousel-hero .carousel-hero-slides::-webkit-scrollbar {
+  display: none;
+}
+
+/* Individual slide */
+.carousel-hero .carousel-hero-slide {
+  flex: 0 0 100%;
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+  min-height: 400px;
+  overflow: hidden;
+  background-color: var(--light-color);
+}
+
+/* Slide background image - full coverage */
+.carousel-hero .carousel-hero-slide .carousel-hero-slide-image {
+  position: absolute;
+  inset: 0;
+}
+
+.carousel-hero .carousel-hero-slide .carousel-hero-slide-image picture {
+  position: absolute;
+  inset: 0;
+}
+
+.carousel-hero .carousel-hero-slide .carousel-hero-slide-image picture > img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+/* Content overlay */
+.carousel-hero .carousel-hero-slide .carousel-hero-slide-content {
+  position: relative;
+  z-index: 1;
+  background-color: rgb(77 77 77 / 75%);
+  color: #fff;
+  padding: 30px 24px;
+  text-align: center;
+  width: 90%;
+  max-width: 500px;
+  margin: 40px auto;
+}
+
+/* Typography - headings */
+.carousel-hero .carousel-hero-slide-content h2 {
+  font-size: var(--heading-font-size-xl);
+  font-weight: 600;
+  font-family: var(--heading-font-family);
+  line-height: 1.04;
+  color: #fff;
+  margin: 0 0 10px;
+}
+
+/* Typography - paragraphs */
+.carousel-hero .carousel-hero-slide-content p {
+  font-size: 16px;
+  font-family: var(--body-font-family);
+  line-height: 1.33;
+  color: #fff;
+  margin: 0 0 10px;
+}
+
+/* First paragraph as title (for slides without h2) */
+.carousel-hero .carousel-hero-slide-content p:first-child {
+  font-size: 19px;
+  font-weight: 600;
+  font-family: var(--heading-font-family);
+  line-height: 1.33;
+}
+
+/* CTA button - orange pill shape */
+.carousel-hero .carousel-hero-slide-content .button-container {
+  margin-top: 10px;
+}
+
+main .carousel-hero .carousel-hero-slide-content a.button:any-link {
+  background-color: var(--brand-orange);
+  color: #fff;
+  padding: 7px 30px;
+  border: 0;
+  border-radius: 8000px;
+  font-size: 18px;
+  font-weight: 400;
+  font-family: var(--body-font-family);
+  text-transform: none;
+  letter-spacing: normal;
+  text-decoration: none;
+  display: inline-block;
+}
+
+main .carousel-hero .carousel-hero-slide-content a.button:hover {
+  background-color: #d96e10;
+}
+
+/* Navigation buttons (prev/next arrows) */
+.carousel-hero .carousel-hero-navigation-buttons {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+.carousel-hero .carousel-hero-navigation-buttons button {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background-color: transparent;
+  cursor: pointer;
+  pointer-events: all;
+  transition: opacity 0.2s;
+}
+
+.carousel-hero .carousel-hero-navigation-buttons button:hover {
+  opacity: 0.7;
+  background-color: transparent;
+}
+
+/* Arrow chevrons using CSS borders */
+.carousel-hero .carousel-hero-navigation-buttons button::after {
+  display: block;
+  content: '';
+  border: 3px solid var(--text-color);
+  border-bottom: 0;
+  border-left: 0;
+  height: 14px;
+  width: 14px;
+  position: absolute;
+  top: 50%;
+  left: calc(50% + 2px);
+  transform: translate(-50%, -50%) rotate(-135deg);
+}
+
+.carousel-hero .carousel-hero-navigation-buttons button.slide-next::after {
+  transform: translate(-50%, -50%) rotate(45deg);
+  left: calc(50% - 2px);
+}
+
+/* Dot indicators */
+.carousel-hero .carousel-hero-slide-indicators {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px 10px;
+  padding: 15px 12px;
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+.carousel-hero .carousel-hero-slide-indicator button {
+  width: 14px;
+  height: 14px;
+  margin: 0;
+  padding: 0;
+  border-radius: 50%;
+  border: 0;
+  background-color: #ccc;
+  transition: background-color 0.2s;
+  cursor: pointer;
+}
+
+.carousel-hero .carousel-hero-slide-indicator button:disabled,
+.carousel-hero .carousel-hero-slide-indicator button:hover,
+.carousel-hero .carousel-hero-slide-indicator button:focus-visible {
+  background-color: var(--brand-orange);
+}
+
+/* Desktop layout */
+@media (width >= 900px) {
+  .carousel-hero .carousel-hero-slide {
+    min-height: 500px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  .carousel-hero .carousel-hero-slide .carousel-hero-slide-content {
+    width: 45%;
+    max-width: 550px;
+    margin: 60px 0 60px 50px;
+    padding: 40px;
+    text-align: center;
+  }
+
+  .carousel-hero .carousel-hero-slide-content h2 {
+    font-size: var(--heading-font-size-xl);
+    line-height: 1.04;
+  }
+
+  .carousel-hero .carousel-hero-slide-content p {
+    font-size: 16px;
+    line-height: 1.33;
+  }
+
+  .carousel-hero .carousel-hero-slide-content p:first-child {
+    font-size: 19px;
+    line-height: 1.33;
+  }
+
+  .carousel-hero .carousel-hero-navigation-buttons {
+    left: 10px;
+    right: 10px;
+  }
+
+  .carousel-hero .carousel-hero-navigation-buttons button {
+    width: 50px;
+    height: 50px;
+  }
+
+  .carousel-hero .carousel-hero-navigation-buttons button::after {
+    height: 16px;
+    width: 16px;
+  }
+}

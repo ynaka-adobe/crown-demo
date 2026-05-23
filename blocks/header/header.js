@@ -213,6 +213,13 @@ export default async function decorate(block) {
 
   const navTools = nav.querySelector('.nav-tools');
   if (navTools) {
+    navTools.querySelectorAll('.button').forEach((button) => {
+      button.className = '';
+      const buttonContainer = button.closest('.button-container');
+      if (buttonContainer) {
+        buttonContainer.className = '';
+      }
+    });
     const search = navTools.querySelector('a[href*="search"]');
     if (search && search.textContent === '') {
       search.setAttribute('aria-label', 'Search');

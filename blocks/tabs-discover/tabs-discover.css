@@ -1,0 +1,160 @@
+/* Block: tabs-discover */
+
+/* Tab list - horizontal centered navigation */
+.tabs-discover .tabs-discover-list {
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  padding: 0 0 30px;
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Individual tab buttons */
+.tabs-discover .tabs-discover-list button {
+  flex: 0 0 auto;
+  margin: 0;
+  padding: 0 22px 12px;
+  border: none;
+  border-bottom: 3px solid transparent;
+  border-radius: 0;
+  background-color: transparent;
+  color: var(--text-color);
+  font-family: var(--body-font-family);
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 26px;
+  text-align: center;
+  text-transform: none;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: border-color 0.2s, color 0.2s;
+}
+
+.tabs-discover .tabs-discover-list button p {
+  margin: 0;
+}
+
+/* Active tab - orange underline indicator, bolder text */
+.tabs-discover .tabs-discover-list button[aria-selected='true'] {
+  border-bottom: 3px solid var(--brand-orange);
+  color: var(--text-color);
+  font-weight: 600;
+  cursor: default;
+}
+
+/* Hover state for inactive tabs */
+.tabs-discover .tabs-discover-list button:hover {
+  color: var(--link-hover-color);
+  background-color: transparent;
+}
+
+.tabs-discover .tabs-discover-list button[aria-selected='true']:hover {
+  color: var(--text-color);
+}
+
+/* Tab panels */
+.tabs-discover .tabs-discover-panel {
+  padding: 0;
+  border: none;
+  margin: 0;
+  position: relative;
+  min-height: 350px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #2d2d2d;
+  overflow: hidden;
+}
+
+.tabs-discover .tabs-discover-panel[aria-hidden='true'] {
+  display: none;
+}
+
+/* Panel content container - simulates the right-side dark overlay */
+.tabs-discover .tabs-discover-panel > div {
+  position: relative;
+  z-index: 1;
+  background-color: rgb(0 0 0 / 70%);
+  padding: 30px 30px 20px 36px;
+  text-align: center;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Panel headings - match source h4 at 30px */
+.tabs-discover .tabs-discover-panel h2 {
+  font-size: 26px;
+  font-weight: 600;
+  font-family: var(--heading-font-family);
+  line-height: 1.275;
+  color: #fff;
+  margin: 10px 0;
+  text-align: center;
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+.tabs-discover .tabs-discover-panel p {
+  font-size: 16px;
+  font-family: var(--body-font-family);
+  line-height: 1.33;
+  color: #fff;
+  margin: 0 0 10px;
+  text-align: center;
+}
+
+/* CTA button - orange rounded pill shape */
+main .tabs-discover .tabs-discover-panel a.button:any-link {
+  background-color: rgb(253 152 39);
+  color: #fff;
+  padding: 7px 30px;
+  border: none;
+  border-radius: 8000px;
+  font-size: 18px;
+  font-weight: 400;
+  text-transform: none;
+  letter-spacing: normal;
+  display: inline-block;
+  text-decoration: none;
+  margin: 10px 0;
+  white-space: nowrap;
+}
+
+main .tabs-discover .tabs-discover-panel a.button:hover {
+  background-color: var(--brand-orange);
+  color: #fff;
+}
+
+/* Button container reset */
+.tabs-discover .tabs-discover-panel .button-container {
+  margin: 0;
+}
+
+/* Desktop layout */
+@media (width >= 900px) {
+  .tabs-discover .tabs-discover-list button {
+    font-size: 20px;
+    padding: 0 22px 12px;
+  }
+
+  .tabs-discover .tabs-discover-panel {
+    min-height: 500px;
+    justify-content: flex-end;
+  }
+
+  .tabs-discover .tabs-discover-panel > div {
+    width: 50%;
+    padding: 40px 36px;
+  }
+
+  .tabs-discover .tabs-discover-panel h2 {
+    font-size: 30px;
+    line-height: 38.25px;
+  }
+
+  .tabs-discover .tabs-discover-panel p {
+    font-size: 19px;
+    line-height: 25.33px;
+  }
+}

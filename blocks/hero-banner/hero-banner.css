@@ -1,0 +1,111 @@
+/* Block: hero-banner */
+
+/* Full-width wrapper override */
+.hero-banner-wrapper {
+  max-width: 100% !important;
+  padding: 0 !important;
+}
+
+.hero-banner {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 60px 24px;
+  min-height: 200px;
+  background-color: rgb(0 0 0);
+  color: #fff;
+  overflow: hidden;
+}
+
+/* Row 1: background image container */
+.hero-banner > div:first-child {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.hero-banner > div:first-child > div {
+  height: 100%;
+}
+
+.hero-banner > div:first-child picture {
+  display: block;
+  height: 100%;
+  width: 100%;
+}
+
+.hero-banner > div:first-child img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+.hero-banner > div:last-child {
+  position: relative;
+  z-index: 1;
+  max-width: 1200px;
+  width: 100%;
+}
+
+.hero-banner > div:last-child > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Headings */
+.hero-banner h2 {
+  font-size: var(--heading-font-size-xl);
+  font-weight: 300;
+  font-family: var(--heading-font-family);
+  line-height: 1.1;
+  color: #fff;
+  margin: 0 0 10px;
+}
+
+/* Description paragraph */
+.hero-banner p {
+  font-size: var(--body-font-size-s);
+  font-family: var(--body-font-family);
+  line-height: 1.6;
+  color: #fff;
+  margin: 0 0 20px;
+}
+
+/* Button overrides */
+.hero-banner .button-container {
+  margin: 10px 0 0;
+}
+
+.hero-banner a.button:any-link {
+  background-color: var(--brand-orange);
+  color: #fff;
+  padding: 12px 24px;
+  border: 2px solid transparent;
+  border-radius: 30px;
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  display: inline-block;
+}
+
+.hero-banner a.button:hover {
+  background-color: #d96e10;
+}
+
+/* No-image variant (pure black bg, no overlay needed) */
+.hero-banner.no-image {
+  background-color: rgb(0 0 0);
+}
+
+@media (width >= 900px) {
+  .hero-banner {
+    padding: 80px 32px;
+    min-height: 250px;
+  }
+}
