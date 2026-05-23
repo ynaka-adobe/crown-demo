@@ -185,8 +185,9 @@ export default async function decorate(block) {
   while (fragment.firstElementChild) nav.append(fragment.firstElementChild);
 
   const classes = ['brand', 'sections', 'tools'];
+  const navSectionDivs = [...nav.children].filter((child) => child.tagName === 'DIV');
   classes.forEach((c, i) => {
-    const section = nav.children[i];
+    const section = navSectionDivs[i];
     if (section) section.classList.add(`nav-${c}`);
   });
 
@@ -211,7 +212,10 @@ export default async function decorate(block) {
     });
   }
 
+  // Build top utility bar from nav-tools content
   const navTools = nav.querySelector('.nav-tools');
+  const topBar = document.createElement('div');
+  topBar.className = 'nav-top-bar';
   if (navTools) {
     navTools.querySelectorAll('.button').forEach((button) => {
       button.className = '';
@@ -220,10 +224,18 @@ export default async function decorate(block) {
         buttonContainer.className = '';
       }
     });
-    const search = navTools.querySelector('a[href*="search"]');
-    if (search && search.textContent === '') {
-      search.setAttribute('aria-label', 'Search');
+    const lists = navTools.querySelectorAll(':scope .default-content-wrapper > ul');
+    if (lists.length >= 2) {
+      const leftUl = lists[0];
+      const rightUl = lists[1];
+      leftUl.className = 'nav-top-bar-left';
+      rightUl.className = 'nav-top-bar-right';
+      topBar.append(leftUl, rightUl);
+    } else if (lists.length === 1) {
+      lists[0].className = 'nav-top-bar-right';
+      topBar.append(lists[0]);
     }
+    navTools.remove();
   }
 
   // hamburger for mobile
@@ -241,6 +253,7 @@ export default async function decorate(block) {
 
   const navWrapper = document.createElement('div');
   navWrapper.className = 'nav-wrapper';
+  navWrapper.prepend(topBar);
   navWrapper.append(nav);
   block.append(navWrapper);
 

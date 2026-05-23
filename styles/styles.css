@@ -29,6 +29,7 @@
 
   /* nav heights */
   --nav-height: 56px;
+  --nav-top-bar-height: 34px;
   --breadcrumbs-height: 34px;
   --header-height: var(--nav-height);
 }

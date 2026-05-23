@@ -7,6 +7,54 @@ header .nav-wrapper {
   position: fixed;
 }
 
+/* Top utility bar */
+header .nav-top-bar {
+  display: none;
+  background-color: #111;
+  padding: 0 32px;
+  font-size: 13px;
+  font-family: var(--body-font-family);
+  max-width: 1264px;
+  margin: 0 auto;
+}
+
+header .nav-top-bar ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+header .nav-top-bar .nav-top-bar-left {
+  margin-right: auto;
+}
+
+header .nav-top-bar .nav-top-bar-left li:first-child a {
+  font-weight: 700;
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+header .nav-top-bar a {
+  color: #ccc;
+  text-decoration: none;
+  padding: 8px 0;
+  display: inline-block;
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+header .nav-top-bar a:hover {
+  color: #fff;
+}
+
+@media (width >= 900px) {
+  header .nav-top-bar {
+    display: flex;
+    align-items: center;
+  }
+}
+
 header nav {
   box-sizing: border-box;
   display: grid;
@@ -52,6 +100,7 @@ header nav p {
   /* line-height: 1; BOILERPLATE DOESN'T HAVE a P tag in header, */
 }
 
+/* stylelint-disable-next-line no-descending-specificity */
 header nav a:any-link {
   color: currentcolor;
 }
@@ -287,12 +336,14 @@ header nav .nav-tools {
   font-size: 14px;
 }
 
+/* stylelint-disable-next-line no-descending-specificity */
 header nav .nav-tools a:any-link {
   color: #fff;
   text-decoration: none;
   font-weight: 400;
 }
 
+/* stylelint-disable-next-line no-descending-specificity */
 header nav .nav-tools a:hover {
   color: var(--brand-orange);
 }
