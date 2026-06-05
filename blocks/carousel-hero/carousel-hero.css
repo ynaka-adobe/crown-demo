@@ -131,55 +131,66 @@ main .carousel-hero .carousel-hero-slide-content a.button:hover {
 /* Navigation buttons (prev/next arrows) */
 .carousel-hero .carousel-hero-navigation-buttons {
   position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  left: 0;
-  right: 0;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  z-index: 2;
+  inset: 0;
+  z-index: 3;
   pointer-events: none;
 }
 
 /* stylelint-disable-next-line no-descending-specificity */
 .carousel-hero .carousel-hero-navigation-buttons button {
-  position: relative;
-  width: 40px;
-  height: 40px;
+  position: absolute;
+  top: 50%;
+  width: 48px;
+  height: 48px;
   margin: 0;
   padding: 0;
   border: 0;
   border-radius: 0;
   background-color: transparent;
   cursor: pointer;
-  pointer-events: all;
+  pointer-events: auto;
   transition: opacity 0.2s;
 }
 
-.carousel-hero .carousel-hero-navigation-buttons button:hover {
-  opacity: 0.7;
+.carousel-hero .carousel-hero-navigation-buttons button.slide-prev {
+  left: 4px;
+  transform: translateY(-50%);
+}
+
+.carousel-hero .carousel-hero-navigation-buttons button.slide-next {
+  right: 4px;
+  transform: translateY(-50%);
+}
+
+.carousel-hero .carousel-hero-navigation-buttons button:hover,
+.carousel-hero .carousel-hero-navigation-buttons button:focus-visible {
+  opacity: 0.6;
   background-color: transparent;
 }
 
-/* Arrow chevrons using CSS borders */
+.carousel-hero .carousel-hero-navigation-buttons button:focus-visible {
+  outline: 2px solid var(--brand-orange);
+  outline-offset: 2px;
+}
+
+/* Thin chevron arrows */
 .carousel-hero .carousel-hero-navigation-buttons button::after {
   display: block;
   content: '';
-  border: 3px solid var(--text-color);
+  border: 2px solid #6d6e70;
   border-bottom: 0;
   border-left: 0;
-  height: 14px;
-  width: 14px;
+  height: 18px;
+  width: 18px;
   position: absolute;
   top: 50%;
-  left: calc(50% + 2px);
+  left: calc(50% + 3px);
   transform: translate(-50%, -50%) rotate(-135deg);
 }
 
 .carousel-hero .carousel-hero-navigation-buttons button.slide-next::after {
   transform: translate(-50%, -50%) rotate(45deg);
-  left: calc(50% - 2px);
+  left: calc(50% - 3px);
 }
 
 /* Dot indicators */
@@ -242,18 +253,21 @@ main .carousel-hero .carousel-hero-slide-content a.button:hover {
     line-height: 1.33;
   }
 
-  .carousel-hero .carousel-hero-navigation-buttons {
-    left: 10px;
-    right: 10px;
+  .carousel-hero .carousel-hero-navigation-buttons button {
+    width: 56px;
+    height: 56px;
   }
 
-  .carousel-hero .carousel-hero-navigation-buttons button {
-    width: 50px;
-    height: 50px;
+  .carousel-hero .carousel-hero-navigation-buttons button.slide-prev {
+    left: 12px;
+  }
+
+  .carousel-hero .carousel-hero-navigation-buttons button.slide-next {
+    right: 12px;
   }
 
   .carousel-hero .carousel-hero-navigation-buttons button::after {
-    height: 16px;
-    width: 16px;
+    height: 22px;
+    width: 22px;
   }
 }

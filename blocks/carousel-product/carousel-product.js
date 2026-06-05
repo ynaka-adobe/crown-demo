@@ -26,6 +26,29 @@ function updateButtonStates(block) {
   nextBtn.disabled = scrollLeft + clientWidth >= scrollWidth - 1;
 }
 
+function updateScrollIndicator(block) {
+  const slidesWrapper = block.querySelector('.carousel-product-slides');
+  const thumb = block.querySelector('.carousel-product-scroll-thumb');
+  const track = block.querySelector('.carousel-product-scroll-indicator');
+  if (!slidesWrapper || !thumb || !track) return;
+
+  const { scrollLeft, scrollWidth, clientWidth } = slidesWrapper;
+  if (scrollWidth <= clientWidth) {
+    track.hidden = true;
+    return;
+  }
+
+  track.hidden = false;
+  const trackWidth = track.clientWidth;
+  const thumbWidth = Math.max((clientWidth / scrollWidth) * trackWidth, 48);
+  const maxThumbOffset = trackWidth - thumbWidth;
+  const maxScroll = scrollWidth - clientWidth;
+  const thumbOffset = maxScroll > 0 ? (scrollLeft / maxScroll) * maxThumbOffset : 0;
+
+  thumb.style.width = `${thumbWidth}px`;
+  thumb.style.transform = `translateX(${thumbOffset}px)`;
+}
+
 function createSlide(row, slideIndex, carouselId) {
   const slide = document.createElement('li');
   slide.dataset.slideIndex = slideIndex;
@@ -76,6 +99,12 @@ export default async function decorate(block) {
   container.append(slidesWrapper);
   block.prepend(container);
 
+  const scrollIndicator = document.createElement('div');
+  scrollIndicator.className = 'carousel-product-scroll-indicator';
+  scrollIndicator.setAttribute('aria-hidden', 'true');
+  scrollIndicator.innerHTML = '<div class="carousel-product-scroll-thumb"></div>';
+  block.append(scrollIndicator);
+
   // Bind scroll events
   const prevBtn = block.querySelector('.slide-prev');
   const nextBtn = block.querySelector('.slide-next');
@@ -83,9 +112,13 @@ export default async function decorate(block) {
   prevBtn.addEventListener('click', () => scrollSlider(block, 'prev'));
   nextBtn.addEventListener('click', () => scrollSlider(block, 'next'));
 
-  // Update button states on scroll
-  slidesWrapper.addEventListener('scroll', () => updateButtonStates(block));
+  const onScroll = () => {
+    updateButtonStates(block);
+    updateScrollIndicator(block);
+  };
 
-  // Initial button state
-  updateButtonStates(block);
+  slidesWrapper.addEventListener('scroll', onScroll);
+  window.addEventListener('resize', onScroll);
+
+  onScroll();
 }

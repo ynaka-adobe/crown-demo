@@ -2,6 +2,7 @@ import {
   buildBlock,
   loadHeader,
   loadFooter,
+  loadFloatingMenu,
   decorateButtons,
   decorateIcons,
   decorateBlocks,
@@ -184,6 +185,7 @@ async function loadLazy(doc) {
 
   loadHeader(doc.querySelector('header'));
   loadFooter(doc.querySelector('footer'));
+  loadFloatingMenu();
 
   loadCSS(`${window.hlx.codeBasePath}/styles/lazy-styles.css`);
   loadFonts();

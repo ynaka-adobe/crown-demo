@@ -2,6 +2,18 @@
    Source: Crown Support section - 4-column icon grid
    Extracted from: https://www.crown.com/en-us.html div.quadlayout */
 
+/* Section heading above the block */
+.section:has(.cards-icon) > .default-content-wrapper h2 {
+  margin: 0 0 8px;
+  font-family: "myriad-pro-semi-condensed", sans-serif;
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 42px;
+  text-align: center;
+  color: var(--text-color);
+}
+
 .cards-icon > ul {
   list-style: none;
   margin: 0;
@@ -17,6 +29,26 @@
   align-items: center;
   text-align: center;
   padding: 16px 8px;
+}
+
+.cards-icon .cards-icon-card-image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 0 16px;
+  min-height: 64px;
+}
+
+.cards-icon .cards-icon-card-image .icon {
+  display: inline-flex;
+  width: 64px;
+  height: 64px;
+}
+
+.cards-icon .cards-icon-card-image .icon img,
+.cards-icon .cards-icon-card-image picture > img {
+  width: 64px;
+  height: 64px;
 }
 
 .cards-icon .cards-icon-card-body {
@@ -49,10 +81,17 @@
 @media (width >= 900px) {
   .cards-icon > ul {
     grid-template-columns: repeat(4, 1fr);
-    padding: 48px 0;
+    padding: 32px 0 48px;
   }
 
   .cards-icon > ul > li {
     padding: 24px 16px;
+  }
+
+  .cards-icon .cards-icon-card-image .icon,
+  .cards-icon .cards-icon-card-image .icon img,
+  .cards-icon .cards-icon-card-image picture > img {
+    width: 72px;
+    height: 72px;
   }
 }

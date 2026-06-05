@@ -1,13 +1,36 @@
 /* Block: tabs-discover */
 
+/* Full-width wrapper */
+.tabs-discover-wrapper {
+  max-width: none !important;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  padding: 0 !important;
+}
+
+/* Section heading above the block */
+.section:has(.tabs-discover) > .default-content-wrapper h2 {
+  margin: 0 0 28px;
+  font-family: "myriad-pro-semi-condensed", sans-serif;
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 42px;
+  text-align: center;
+  color: var(--text-color);
+}
+
 /* Tab list - horizontal centered navigation */
 .tabs-discover .tabs-discover-list {
   display: flex;
   justify-content: center;
-  margin: 0;
-  padding: 0 0 30px;
+  flex-wrap: nowrap;
+  gap: 0;
+  margin: 0 0 0;
+  padding: 0 24px 2px;
   max-width: 100%;
   overflow-x: auto;
+  border-bottom: 1px solid #e0e0e0;
   -webkit-overflow-scrolling: touch;
 }
 
@@ -15,15 +38,15 @@
 .tabs-discover .tabs-discover-list button {
   flex: 0 0 auto;
   margin: 0;
-  padding: 0 22px 12px;
+  padding: 0 22px 14px;
   border: none;
-  border-bottom: 3px solid transparent;
+  border-bottom: 4px solid transparent;
   border-radius: 0;
   background-color: transparent;
-  color: var(--text-color);
+  color: #6d6e70;
   font-family: var(--body-font-family);
   font-size: 16px;
-  font-weight: 300;
+  font-weight: 400;
   line-height: 26px;
   text-align: center;
   text-transform: none;
@@ -38,7 +61,7 @@
 
 /* Active tab - orange underline indicator, bolder text */
 .tabs-discover .tabs-discover-list button[aria-selected='true'] {
-  border-bottom: 3px solid var(--brand-orange);
+  border-bottom: 4px solid var(--brand-orange);
   color: var(--text-color);
   font-weight: 600;
   cursor: default;
@@ -56,15 +79,14 @@
 
 /* Tab panels */
 .tabs-discover .tabs-discover-panel {
-  padding: 0;
-  border: none;
-  margin: 0;
   position: relative;
-  min-height: 350px;
   display: flex;
   align-items: center;
-  justify-content: center;
-  background-color: #2d2d2d;
+  justify-content: flex-end;
+  min-height: 320px;
+  margin: 0;
+  padding: 0;
+  border: none;
   overflow: hidden;
 }
 
@@ -72,43 +94,69 @@
   display: none;
 }
 
-/* Panel content container - simulates the right-side dark overlay */
-.tabs-discover .tabs-discover-panel > div {
+/* Background image */
+.tabs-discover .tabs-discover-panel-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-color: #2d2d2d;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.tabs-discover .tabs-discover-panel-bg picture {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.tabs-discover .tabs-discover-panel-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Right-side content overlay */
+.tabs-discover .tabs-discover-panel-content {
   position: relative;
   z-index: 1;
   background-color: rgb(0 0 0 / 70%);
-  padding: 30px 30px 20px 36px;
-  text-align: center;
-  width: 100%;
+  width: calc(100% - 48px);
+  max-width: 520px;
+  margin: 24px;
+  padding: 30px 24px;
   box-sizing: border-box;
+  text-align: center;
 }
 
-/* Panel headings - match source h4 at 30px */
-.tabs-discover .tabs-discover-panel h2 {
+/* Panel headings */
+.tabs-discover .tabs-discover-panel-content h2 {
   font-size: 26px;
   font-weight: 600;
   font-family: var(--heading-font-family);
   line-height: 1.275;
   color: #fff;
-  margin: 10px 0;
+  margin: 0 0 12px;
   text-align: center;
 }
 
 /* stylelint-disable-next-line no-descending-specificity */
-.tabs-discover .tabs-discover-panel p {
+.tabs-discover .tabs-discover-panel-content p {
   font-size: 16px;
   font-family: var(--body-font-family);
-  line-height: 1.33;
+  line-height: 1.5;
   color: #fff;
-  margin: 0 0 10px;
+  margin: 0 0 16px;
   text-align: center;
 }
 
 /* CTA button - orange rounded pill shape */
-main .tabs-discover .tabs-discover-panel a.button:any-link {
-  background-color: rgb(253 152 39);
+main .tabs-discover .tabs-discover-panel-content a.button:any-link,
+main .tabs-discover .tabs-discover-panel-content a:any-link {
+  background-color: var(--brand-orange);
   color: #fff;
-  padding: 7px 30px;
+  padding: 10px 32px;
   border: none;
   border-radius: 8000px;
   font-size: 18px;
@@ -117,44 +165,51 @@ main .tabs-discover .tabs-discover-panel a.button:any-link {
   letter-spacing: normal;
   display: inline-block;
   text-decoration: none;
-  margin: 10px 0;
+  margin: 8px 0 0;
   white-space: nowrap;
 }
 
-main .tabs-discover .tabs-discover-panel a.button:hover {
-  background-color: var(--brand-orange);
+main .tabs-discover .tabs-discover-panel-content a.button:hover,
+main .tabs-discover .tabs-discover-panel-content a:any-link:hover {
+  background-color: #d96e10;
   color: #fff;
+  text-decoration: none;
 }
 
 /* Button container reset */
-.tabs-discover .tabs-discover-panel .button-container {
+.tabs-discover .tabs-discover-panel-content .button-container {
   margin: 0;
 }
 
 /* Desktop layout */
 @media (width >= 900px) {
+  .tabs-discover .tabs-discover-list {
+    padding: 0 32px 2px;
+  }
+
   .tabs-discover .tabs-discover-list button {
     font-size: 20px;
-    padding: 0 22px 12px;
+    padding: 0 28px 16px;
   }
 
   .tabs-discover .tabs-discover-panel {
-    min-height: 500px;
-    justify-content: flex-end;
+    min-height: 480px;
   }
 
-  .tabs-discover .tabs-discover-panel > div {
-    width: 50%;
+  .tabs-discover .tabs-discover-panel-content {
+    width: 42%;
+    max-width: 560px;
+    margin: 48px;
     padding: 40px 36px;
   }
 
-  .tabs-discover .tabs-discover-panel h2 {
+  .tabs-discover .tabs-discover-panel-content h2 {
     font-size: 30px;
-    line-height: 38.25px;
+    line-height: 1.275;
   }
 
-  .tabs-discover .tabs-discover-panel p {
+  .tabs-discover .tabs-discover-panel-content p {
     font-size: 19px;
-    line-height: 25.33px;
+    line-height: 1.33;
   }
 }

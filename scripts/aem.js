@@ -619,6 +619,17 @@ async function loadFooter(footer) {
 }
 
 /**
+ * Loads a floating quick-action menu fixed to the right edge of the viewport.
+ * @returns {Promise}
+ */
+async function loadFloatingMenu() {
+  const block = buildBlock('floating-menu', '');
+  document.body.append(block);
+  decorateBlock(block);
+  return loadBlock(block);
+}
+
+/**
  * Wait for Image.
  * @param {Element} section section element
  */
@@ -683,6 +694,7 @@ export {
   getMetadata,
   loadBlock,
   loadCSS,
+  loadFloatingMenu,
   loadFooter,
   loadHeader,
   loadScript,

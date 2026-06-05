@@ -1,6 +1,52 @@
-import { createOptimizedPicture } from '../../scripts/aem.js';
+import { createOptimizedPicture, decorateIcons } from '../../scripts/aem.js';
+
+const CARD_ICONS_BY_LABEL = {
+  'Locate a Crown Dealer': 'map-marker',
+  'Forklift Service': 'wrench',
+  'Forklift Parts & Accessories': 'cogs',
+  'Safety & Training': 'users',
+};
+
+const CARD_ICONS_BY_PATH = {
+  '/en-us/forklift-dealers': 'map-marker',
+  '/en-us/service-parts/integrity-service': 'wrench',
+  '/en-us/service-parts/integrity-parts': 'cogs',
+  '/en-us/safety-training': 'users',
+};
 
 function moveInstrumentation() {}
+
+function normalizePath(href) {
+  try {
+    const { pathname } = new URL(href, window.location.origin);
+    return pathname.replace(/\.html$/, '').replace(/\/$/, '') || '/';
+  } catch {
+    return href;
+  }
+}
+
+function getIconName(li) {
+  const link = li.querySelector('a');
+  const label = link?.textContent.trim() || li.querySelector('h3')?.textContent.trim();
+  if (label && CARD_ICONS_BY_LABEL[label]) return CARD_ICONS_BY_LABEL[label];
+  if (link?.href) {
+    const path = normalizePath(link.href);
+    if (CARD_ICONS_BY_PATH[path]) return CARD_ICONS_BY_PATH[path];
+  }
+  return null;
+}
+
+function ensureCardIcon(li) {
+  if (li.querySelector('.cards-icon-card-image picture, .cards-icon-card-image .icon')) return;
+
+  const iconName = getIconName(li);
+  if (!iconName) return;
+
+  const imageDiv = document.createElement('div');
+  imageDiv.className = 'cards-icon-card-image';
+  imageDiv.innerHTML = `<span class="icon icon-${iconName}" aria-hidden="true"></span>`;
+  li.prepend(imageDiv);
+}
 
 export default function decorate(block) {
   /* change to ul, li */
@@ -22,4 +68,7 @@ export default function decorate(block) {
   });
   block.textContent = '';
   block.append(ul);
+
+  ul.querySelectorAll('li').forEach(ensureCardIcon);
+  decorateIcons(block);
 }

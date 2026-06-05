@@ -28,8 +28,8 @@
   --heading-font-size-xs: 16px;
 
   /* nav heights */
-  --nav-height: 56px;
-  --nav-top-bar-height: 34px;
+  --nav-height: 64px;
+  --nav-top-bar-height: 38px;
   --breadcrumbs-height: 34px;
   --header-height: var(--nav-height);
 }
@@ -64,10 +64,6 @@ body.appear {
   display: block;
 }
 
-header {
-  height: var(--header-height);
-}
-
 header .header,
 footer .footer {
   visibility: hidden;
@@ -79,8 +75,12 @@ footer .footer[data-block-status="loaded"] {
 }
 
 @media (width >= 900px) {
+  :root {
+    --header-height: calc(var(--nav-top-bar-height) + var(--nav-height));
+  }
+
   body[data-breadcrumbs] {
-    --header-height: calc(var(--nav-height) + var(--breadcrumbs-height));
+    --header-height: calc(var(--nav-top-bar-height) + var(--nav-height) + var(--breadcrumbs-height));
   }
 }
 

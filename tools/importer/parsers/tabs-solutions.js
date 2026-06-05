@@ -40,6 +40,10 @@ export default function parse(element, { document }) {
       const link = document.createElement('a');
       link.href = item.href;
       link.textContent = titleText ? titleText.textContent.trim() : item.textContent.trim();
+      const bgMatch = item.getAttribute('style')?.match(/background-image:\s*url\(['"]?([^'")]+)['"]?\)/i);
+      if (bgMatch?.[1]) {
+        link.dataset.bgImage = bgMatch[1];
+      }
       const p = document.createElement('p');
       p.appendChild(link);
       contentElements.push(p);
