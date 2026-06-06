@@ -1,166 +1,26 @@
-import { decorateIcons, getMetadata } from '../../scripts/aem.js';
+import { getRootPath, isMultistore } from '@dropins/tools/lib/aem/configs.js';
+// Dropin Components
+import {
+  Button,
+  provider as UI,
+} from '@dropins/tools/components.js';
+
+// Block-level
+import createModal from '../modal/modal.js';
+import { getMetadata } from '../../scripts/aem.js';
 import { loadFragment } from '../fragment/fragment.js';
 
-const FOOTER_COLUMNS = [
-  {
-    title: 'Forklifts',
-    links: [
-      { label: 'Rental Forklifts', href: '/en-us/forklift-rentals' },
-      { label: 'New Forklifts', href: '/en-us/forklifts' },
-      { label: 'Reconditioned Forklifts', href: '/en-us/remanufactured-forklifts' },
-      { label: 'Used / Pre-Owned Forklifts', href: '/en-us/pre-owned-forklifts' },
-      { label: 'V-Force Batteries & Chargers', href: '/en-us/batteries-and-chargers' },
-    ],
-  },
-  {
-    title: 'More From Crown',
-    links: [
-      { label: 'Service', href: '/en-us/service-parts/integrity-service' },
-      { label: 'Solutions', href: '/en-us/solutions' },
-      { label: 'Support', href: '/en-us/support' },
-      { label: 'Shop', href: 'https://shop.crown.com/' },
-      { label: 'Crown Branded Merchandise', href: 'https://crownstore.crown.com/' },
-    ],
-  },
-  {
-    title: 'About Crown',
-    links: [
-      { label: 'Our Company', href: '/en-us/about-us' },
-      { label: 'Code of Conduct', href: 'https://www.crown.com/content/dam/crown/pdfs/en-us/brochures/non-products/code-of-conduct.pdf' },
-      { label: 'Supplier Code of Conduct', href: 'https://www.crown.com/content/dam/crown/pdfs/en-us/legal/Supplier-Code-of-Conduct.pdf' },
-      { label: 'Locations', href: '/en-us/about-us#whereweare' },
-      { label: 'Careers', href: 'https://us-careers.crown.com/' },
-      { label: 'Crown Blog', href: 'https://blog.crown.com/' },
-      { label: 'Crown News & Press', href: '/en-us/newsroom' },
-    ],
-  },
-  {
-    title: 'Utilities',
-    links: [
-      { label: 'Service Manuals', href: '/en-us/manuals-safety-labels' },
-      { label: 'Operator Manuals', href: '/en-us/operator-manuals' },
-      { label: 'FAQ', href: 'https://shop.crown.com/crown/en/faq' },
-    ],
-  },
-];
-
-const FOOTER_CONNECT = [
-  { label: 'Find a Dealer', href: '/en-us/forklift-dealers', icon: 'map-marker' },
-  { label: 'Contact Us', href: '/en-us/contact-us', icon: 'comment' },
-  { label: '419-629-2311', href: 'tel:4196292311', icon: 'phone' },
-];
-
-const FOOTER_SOCIAL = [
-  { label: 'Facebook', href: 'https://www.facebook.com/CrownEquipmentCorporation', icon: 'facebook' },
-  { label: 'YouTube', href: 'https://www.youtube.com/user/CrownEquipment', icon: 'youtube' },
-  { label: 'LinkedIn', href: 'https://linkedin.com/company/crownequipment', icon: 'linkedin' },
-];
-
-const FOOTER_LEGAL = [
-  { label: 'Legal Information', href: '/en-us/legal' },
-  { label: 'Data Security Incident', href: '/securityincident' },
-  { label: 'Terms and Conditions', href: '/en-us/terms-and-conditions' },
-];
-
-function isBoilerplateFooter(fragment) {
-  const text = fragment.textContent || '';
-  return text.includes('Adobe') || fragment.querySelectorAll(':scope > div').length <= 1;
-}
-
-function buildFooterTop() {
-  const top = document.createElement('div');
-  top.className = 'footer-top';
-
-  const search = document.createElement('form');
-  search.className = 'footer-search';
-  search.setAttribute('role', 'search');
-  search.setAttribute('aria-label', 'Search Crown');
-  search.action = '/search';
-  search.method = 'get';
-  search.innerHTML = `
-    <label class="footer-search-label">
-      <span class="icon icon-search" aria-hidden="true"></span>
-      <span class="sr-only">Search Crown</span>
-      <input type="search" name="q" placeholder="Search Crown" maxlength="2048" autocomplete="on" />
-    </label>
-  `;
-
-  const connect = document.createElement('div');
-  connect.className = 'footer-connect';
-  connect.innerHTML = FOOTER_CONNECT.map((item) => `
-    <a href="${item.href}">
-      <span class="icon icon-${item.icon}" aria-hidden="true"></span>
-      <span>${item.label}</span>
-    </a>
-  `).join('');
-
-  top.append(search, connect);
-  return top;
-}
-
-function buildFooterColumns() {
-  const columns = document.createElement('div');
-  columns.className = 'footer-columns';
-  columns.innerHTML = FOOTER_COLUMNS.map((column) => `
-    <div class="footer-column">
-      <h3>${column.title}</h3>
-      <ul>
-        ${column.links.map((link) => `<li><a href="${link.href}">${link.label}</a></li>`).join('')}
-      </ul>
-    </div>
-  `).join('');
-  return columns;
-}
-
-function buildFooterBottom() {
-  const bottom = document.createElement('div');
-  bottom.className = 'footer-bottom';
-
-  const locale = document.createElement('div');
-  locale.className = 'footer-locale';
-  locale.innerHTML = '<a href="#">United States - English</a>';
-
-  const brand = document.createElement('div');
-  brand.className = 'footer-brand';
-  brand.innerHTML = `
-    <a class="footer-logo" href="/en-us" aria-label="Crown Equipment Corporation">
-      <img src="${window.hlx.codeBasePath}/icons/crown-logo.png" alt="Crown" width="135" height="31" loading="lazy" />
-    </a>
-    <ul class="footer-social">
-      ${FOOTER_SOCIAL.map((item) => `
-        <li>
-          <a href="${item.href}" aria-label="${item.label}" target="_blank" rel="noopener noreferrer">
-            <span class="icon icon-${item.icon}" aria-hidden="true"></span>
-          </a>
-        </li>
-      `).join('')}
-    </ul>
-  `;
-
-  const legal = document.createElement('div');
-  legal.className = 'footer-legal';
-  const year = new Date().getFullYear();
-  legal.innerHTML = `
-    <p class="footer-copyright">© 2002-${year} Crown Equipment Corporation</p>
-    <p class="footer-legal-links">
-      ${FOOTER_LEGAL.map((link, i) => `${i ? ' | ' : ''}<a href="${link.href}">${link.label}</a>`).join('')}
-      | <a href="#">Cookie Settings</a>
-    </p>
-  `;
-
-  bottom.append(locale, brand, legal);
-  return bottom;
-}
-
-function buildCrownFooter() {
-  const inner = document.createElement('div');
-  inner.className = 'footer-inner';
-  inner.append(
-    buildFooterTop(),
-    buildFooterColumns(),
-    buildFooterBottom(),
-  );
-  return inner;
+/**
+ * Toggles all storeSelector sections
+ * @param {Element} sections The container element
+ * @param {Boolean} expanded Whether the element should be expanded or collapsed
+ */
+function toggleStoreDropdown(sections, expanded = false) {
+  sections
+    .querySelectorAll('.storeview-modal .default-content-wrapper > ul > li')
+    .forEach((section) => {
+      section.setAttribute('aria-expanded', expanded);
+    });
 }
 
 /**
@@ -168,19 +28,145 @@ function buildCrownFooter() {
  * @param {Element} block The footer block element
  */
 export default async function decorate(block) {
+  const root = getRootPath();
+  // Load Footer as Fragment
   const footerMeta = getMetadata('footer');
   const footerPath = footerMeta ? new URL(footerMeta, window.location).pathname : '/footer';
   const fragment = await loadFragment(footerPath);
 
+  // decorate footer DOM
   block.textContent = '';
   const footer = document.createElement('div');
 
-  if (fragment && !isBoilerplateFooter(fragment)) {
-    while (fragment.firstElementChild) footer.append(fragment.firstElementChild);
-  } else {
-    footer.append(buildCrownFooter());
+  // Footer content - Store Switcher
+  if (isMultistore()) {
+    footer.innerHTML = `
+      <div class="storeview-switcher-button"></div>
+    `;
+
+    // Container and component refs
+    let modal;
+
+    // Modal Actions
+    const showModal = async (content) => {
+      modal = await createModal([content]);
+      modal.showModal();
+    };
+
+    // Rendering the Store Switcher Modal Content
+    const $storeSwitcherBtn = footer.querySelector(
+      '.storeview-switcher-button',
+    );
+
+    // Store Switcher Modal Content
+    const storeSwitcherPath = '/store-switcher';
+    let fragmentStoreView;
+
+    try {
+      fragmentStoreView = await loadFragment(storeSwitcherPath);
+      if (!fragmentStoreView) throw new Error(`Footer does not render due to Store Switcher fragment (${storeSwitcherPath}) not found`);
+    } catch (error) {
+      console.error('Error loading store switcher fragment:', error);
+      return;
+    }
+
+    // Store Switcher Modal Content
+    const storeSwitcher = document.createElement('div');
+
+    // Return Storename from stores-switcher
+    const selected = [...fragmentStoreView.querySelectorAll('a')].find((a) => {
+      const url = new URL(a.href);
+      return url.pathname.startsWith(root);
+    });
+
+    storeSwitcher.id = 'storeview-modal';
+    while (fragmentStoreView.firstElementChild) {
+      storeSwitcher.append(fragmentStoreView.firstElementChild);
+    }
+
+    // create classes for storeview modal sections
+    const classes = ['storeview-title', 'storeview-list'];
+    classes.forEach((c, i) => {
+      const section = storeSwitcher.children[i];
+      if (section) section.classList.add(`storeview-modal-${c}`);
+    });
+
+    // Store Switcher Modal Content - Store View Title
+    const storeViewTitle = storeSwitcher.querySelector('.storeview-modal-storeview-title');
+    const title = storeViewTitle.querySelector('h3');
+    if (title) {
+      title.className = '';
+      title.closest('h3').classList.add('storeview-modal-storeview-title');
+      title.setAttribute('tabindex', '0');
+    }
+
+    // Storeview List
+    const storeViewList = storeSwitcher.querySelector('.storeview-modal-storeview-list');
+
+    if (storeViewList && storeViewList.children.length) {
+      // Add storeview-selection class to parent UL
+      storeViewList
+        .querySelectorAll(':scope .default-content-wrapper > ul')
+        .forEach((storeView) => {
+          if (storeView.querySelector('ul')) storeView.classList.add('storeview-selection');
+        });
+
+      // if multiple stores exist per region, add class storeviews and click events for accordion
+      storeViewList.querySelectorAll('.default-content-wrapper > ul > li > ul').forEach((storeRegion) => {
+        if (storeRegion.children.length > 1) {
+          if (storeRegion.querySelector('ul')) storeRegion.classList.add('storeviews');
+
+          // Accessiblity: addeventlistener for 'click' and keyboard event and tab indexes
+          storeViewList.querySelectorAll(':scope li').forEach((storeView) => {
+            const link = storeView.closest('a');
+            if (link) link.setAttribute('tabindex', '0');
+            storeView.addEventListener('keydown', (e) => {
+              if (e.key === 'Enter' || e.key === ' ') {
+                const expanded = storeView.getAttribute('aria-expanded') === 'true';
+                toggleStoreDropdown(storeViewList);
+                storeView.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+              }
+            });
+            storeView.addEventListener('click', () => {
+              const expanded = storeView.getAttribute('aria-expanded') === 'true';
+              toggleStoreDropdown(storeViewList);
+              storeView.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+            });
+          });
+        }
+      });
+
+      // If only one storeview link in region, convert parent UL into the li and remove the child UL
+      storeViewList.querySelectorAll('.default-content-wrapper > ul > li > ul').forEach((storeRegion) => {
+        const li = storeRegion.closest('li');
+
+        if (storeRegion.children.length <= 1) {
+          li.classList.add('storeview-single-store');
+          const ulParent = li.closest('ul');
+          const replacedChild = (storeRegion.firstElementChild);
+          replacedChild.className = 'storeview-single-store';
+
+          ulParent.replaceChild(replacedChild, li);
+          ulParent.setAttribute('tabindex', '0');
+        } else {
+          li.classList.add('storeview-multiple-stores');
+          li.setAttribute('tabindex', '0');
+        }
+      });
+
+      UI.render(Button, {
+        children: `${selected.text}`,
+        'data-testid': 'storeview-switcher-button',
+        className: 'storeview-switcher-button',
+        size: 'medium',
+        variant: 'teritary',
+        onClick: () => {
+          showModal(storeSwitcher);
+        },
+      })($storeSwitcherBtn);
+    }
   }
+  while (fragment.firstElementChild) footer.append(fragment.firstElementChild);
 
   block.append(footer);
-  decorateIcons(block);
 }

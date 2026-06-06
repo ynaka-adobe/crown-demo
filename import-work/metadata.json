@@ -1,0 +1,73 @@
+{
+  "url": "https://www.crown.com/en-us.html",
+  "timestamp": "2026-04-23T14:19:49.619Z",
+  "paths": {
+    "documentPath": "/en-us",
+    "htmlFilePath": "/en-us.plain.html",
+    "mdFilePath": "/en-us.md",
+    "dirPath": "",
+    "filename": "en-us"
+  },
+  "screenshot": "/Users/jmaurer/Documents/ACCS Git Hub Repos/crown/import-work/screenshot.png",
+  "html": {
+    "filePath": "/Users/jmaurer/Documents/ACCS Git Hub Repos/crown/import-work/cleaned.html",
+    "size": 617259
+  },
+  "metadata": {
+    "title": "Crown Equipment Corporation | USA | Material Handling",
+    "description": "Crown Equipment Corporation is a global manufacturer of material handling equipment, lift trucks and technology, with a network of more than 500 forklift dealers in more than 80 countries.",
+    "viewport": "width=device-width, initial-scale=1",
+    "content-page-ref": "OtAPMK4TkeMC2ZxzF2yGSMfJa7il6L2r5MLg-sJmZHo",
+    "canonical": "https://www.crown.com/en-us.html",
+    "jsonLd": {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "url": "http://www.crown.com",
+      "logo": "https://www.crown.com/content/dam/crown/logos/logo.png"
+    }
+  },
+  "images": {
+    "count": 31,
+    "mapping": {
+      "https://www.crown.com/content/dam/crown/logos/logo.png": "./images/a23fcab467846296c613d1363d6ffb9d.png",
+      "https://www.crown.com/content/dam/crown/images/home-page/2022/product-slider/stand-up-forklifts-300x300.jpg": "./images/ad2be70fc00265e29632c18e43070544.jpg",
+      "https://www.crown.com/content/dam/crown/images/home-page/2022/product-slider/reach-trucks-300x300.jpg": "./images/1e9b371ea8ee593a7ab21f88ee549dbf.jpg",
+      "https://www.crown.com/content/dam/crown/images/home-page/2022/product-slider/ic-forklifts-300x300.jpg": "./images/b4746f05bcf72df09e1428af7d6eeb00.jpg",
+      "https://www.crown.com/content/dam/crown/images/home-page/2022/product-slider/sit-down-forklifts-300x300.png": "./images/819ceb46cd2d909ed49a5d3223462f38.png",
+      "https://www.crown.com/content/dam/crown/images/home-page/2022/product-slider/turret-order-pickers-us-300x300.jpg": "./images/4c1b1e3c423419dd32e5cdf5f40ce3e5.jpg",
+      "https://www.crown.com/content/dam/crown/images/home-page/2022/product-slider/man-up-order-pickers.jpg": "./images/da0be1e8d15c94307ac0f60127cb803b.jpg",
+      "https://www.crown.com/content/dam/crown/images/home-page/2022/product-slider/straddle-stackers-300x300-en-us.png": "./images/a5ece19614be72a0ce2f986bad1685ce.png",
+      "https://www.crown.com/content/dam/crown/images/home-page/2022/product-slider/work-assist-vehicles-300x300.jpg": "./images/f835ca96687ffa82cb2513bb7bb71d4c.jpg",
+      "https://www.crown.com/content/dam/crown/images/home-page/2022/product-slider/counterbalance-stackers-300x300.jpg": "./images/65855e8f19cc54752f61a2fdf7c4dc1f.jpg",
+      "https://www.crown.com/content/dam/crown/images/home-page/2022/product-slider/tow-tractors-300x300.jpg": "./images/8b8e1ee3df7714cee4a573e3be851afc.jpg",
+      "https://www.crown.com/content/dam/crown/images/home-page/2022/product-slider/hand-pallet-jacks-300x300.jpg": "./images/7409a3e776af0ae83b8d4c7b106a4ef0.jpg",
+      "https://www.crown.com/content/dam/crown/images/home-page/2022/product-slider/rider-pallet-trucks-300x300.jpg": "./images/b5e4df25c1da40a9656dddc7a8c9e2a7.jpg",
+      "https://www.crown.com/content/dam/crown/images/home-page/2022/product-slider/electric-pallet-jacks-300x300.jpg": "./images/87887a065be82d801e73cc0097aed5dc.jpg",
+      "https://www.crown.com/content/dam/crown/logos/logo-white-mobile.png": "./images/e9df43e53e0207e6e70c804b2ed3a722.png",
+      "https://www.crown.com/etc/clientlibs/global-web/page/head/css/compiled/ajax-loader.gif": "./images/4836df47bae9ebbf6c3f43d7385f7356.png",
+      "https://www.crown.com/content/dam/crown/images/home-page/2022/carousel/Service-Tech-Desktop.jpg": "./images/1facac3bc079a617e510a50d5e616efa.jpg",
+      "https://www.crown.com/content/dam/crown/images/home-page/2022/carousel/wj-50-retail-campaign-desktop.jpg": "./images/e257b774d4f723823aca1ee6cc5c0261.jpg",
+      "https://www.crown.com/content/dam/crown/images/home-page/2022/carousel/encore-inventory-promotion-desktop.jpg": "./images/675352a0978164255ac862a73d1f8cf9.jpg",
+      "https://www.crown.com/content/dam/crown/images/home-page/current/carousel/CR00001-12-25-Energy-Solutions-e-Book-Desktop.jpg": "./images/cdbb47a6f31b2f393c02a72bdda87d2f.jpg",
+      "https://www.crown.com/content/dam/crown/images/home-page/2022/carousel/service-request-app-desktop.jpg": "./images/590447c2ffedb240582a16d9f721393c.jpg",
+      "https://www.crown.com/content/dam/crown/images/home-page/2022/smart-solutions/connected-solutions.jpg": "./images/27be544cddc2bf89a3084c8af8f1245e.jpg",
+      "https://www.crown.com/content/dam/crown/images/home-page/2022/smart-solutions/all-solutions-energy.jpg": "./images/a375b5b82e936299ae6e330e283b8f94.jpg",
+      "https://www.crown.com/content/dam/crown/images/home-page/2022/promo/banner-shop-crown.jpg": "./images/b7d254262a452655954ed1c0cfdc3efa.jpg",
+      "https://www.crown.com/content/dam/crown/images/home-page/2022/carousel/build-my-truck-desktop.gif": "./images/e9c2cd7684e7dd8280f8413e1204ee04.png",
+      "https://www.crown.com/content/dam/crown/images/home-page/2022/smart-solutions/all-solutions-warehouse.jpg": "./images/9ea41dab1e34478a6377c27d5670957e.jpg",
+      "https://www.crown.com/content/dam/crown/images/home-page/2022/smart-solutions/all-solutions-automation.jpg": "./images/e8842deec3403a3a4d1307a5f5b43578.jpg",
+      "https://www.crown.com/content/dam/crown/images/home-page/2022/discover-crown/discover-crown-our-company.jpg": "./images/4f271b53b7ed8377433c05451960dd4b.jpg",
+      "https://cdn.cookielaw.org/logos/static/powered_by_logo.svg": "./images/a9584a367ebcccfac48987ce1fec5eae.png",
+      "https://cdn.cookielaw.org/logos/a4c58da4-e6ef-48c4-9a5c-29179bc96984/01997289-4fe8-7e10-84f3-acc6c53c9d42/8ca83a24-3c93-4022-9e2d-d99f5990ec45/Crown-Logo-landscape.png": "./images/4c9eaaef4238034aac6f50afde9dcd35.png",
+      "https://cdn.cookielaw.org/logos/static/ot_close.svg": "./images/cec4a77b663a079574d478e06d310304.png"
+    },
+    "stats": {
+      "total": 41,
+      "converted": 4,
+      "skipped": 27,
+      "failed": 10,
+      "tooLarge": 0,
+      "limitReached": 0
+    }
+  }
+}

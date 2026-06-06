@@ -22,6 +22,12 @@
         "name": "robots",
         "label": "Robots",
         "description": "Index control via robots"
+      },
+      {
+        "component": "text",
+        "name": "sku",
+        "label": "SKU",
+        "description": "Optional: Specify a product SKU for this page"
       }
     ]
   },
@@ -31,12 +37,18 @@
       {
         "component": "reference",
         "name": "image",
+        "hidden": true,
+        "multi": false
+      },
+      {
+        "component": "reference",
+        "name": "img:nth-child(3)[src]",
         "label": "Image",
         "multi": false
       },
       {
         "component": "text",
-        "name": "imageAlt",
+        "name": "img:nth-child(3)[alt]",
         "label": "Alt Text"
       }
     ]
@@ -52,6 +64,100 @@
           {
             "name": "Highlight",
             "value": "highlight"
+          }
+        ]
+      },
+      {
+        "component": "select",
+        "name": "padding",
+        "label": "Padding",
+        "options": [
+          {
+            "name": "Default",
+            "value": ""
+          },
+          {
+            "name": "Small",
+            "value": "small"
+          },
+          {
+            "name": "Medium",
+            "value": "medium"
+          },
+          {
+            "name": "Large",
+            "value": "large"
+          },
+          {
+            "name": "Big",
+            "value": "big"
+          },
+          {
+            "name": "XBig",
+            "value": "xbig"
+          },
+          {
+            "name": "XXBig",
+            "value": "xxbig"
+          },
+          {
+            "name": "Huge",
+            "value": "huge"
+          },
+          {
+            "name": "XHuge",
+            "value": "xhuge"
+          },
+          {
+            "name": "XXHuge",
+            "value": "xxhuge"
+          }
+        ]
+      },
+      {
+        "component": "select",
+        "name": "margin",
+        "label": "Margin",
+        "options": [
+          {
+            "name": "Default",
+            "value": ""
+          },
+          {
+            "name": "Small",
+            "value": "small"
+          },
+          {
+            "name": "Medium",
+            "value": "medium"
+          },
+          {
+            "name": "Large",
+            "value": "large"
+          },
+          {
+            "name": "Big",
+            "value": "big"
+          },
+          {
+            "name": "XBig",
+            "value": "xbig"
+          },
+          {
+            "name": "XXBig",
+            "value": "xxbig"
+          },
+          {
+            "name": "Huge",
+            "value": "huge"
+          },
+          {
+            "name": "XHuge",
+            "value": "xhuge"
+          },
+          {
+            "name": "XXHuge",
+            "value": "xxhuge"
           }
         ]
       }
@@ -145,18 +251,178 @@
     ]
   },
   {
+    "id": "commerce-account-header",
+    "fields": [
+      {
+        "component": "text",
+        "name": "title",
+        "label": "Title"
+      }
+    ]
+  },
+  {
+    "id": "commerce-addresses",
+    "fields": [
+      {
+        "component": "boolean",
+        "name": "minified-view",
+        "label": "Minified View"
+      }
+    ]
+  },
+  {
+    "id": "commerce-cart",
+    "fields": [
+      {
+        "component": "boolean",
+        "name": "hide-heading",
+        "label": "Hide Heading"
+      },
+      {
+        "component": "text",
+        "name": "max-items",
+        "label": "Max Items"
+      },
+      {
+        "component": "text",
+        "name": "hide-attributes",
+        "label": "Hide Attributes"
+      },
+      {
+        "component": "boolean",
+        "name": "enable-item-quantity-update",
+        "label": "Enable Item Quantity Update"
+      },
+      {
+        "component": "boolean",
+        "name": "enable-item-remove",
+        "label": "Enable Item Remove"
+      },
+      {
+        "component": "boolean",
+        "name": "enable-estimate-shipping",
+        "label": "Enable Estimate Shipping"
+      },
+      {
+        "component": "text",
+        "name": "start-shopping-url",
+        "label": "Start Shopping URL"
+      },
+      {
+        "component": "text",
+        "name": "checkout-url",
+        "label": "Checkout URL"
+      },
+      {
+        "component": "boolean",
+        "name": "enable-updating-product",
+        "label": "Enable Updating Product"
+      },
+      {
+        "component": "boolean",
+        "name": "undo-remove-item",
+        "label": "Undo Remove Item"
+      }
+    ]
+  },
+  {
+    "id": "commerce-mini-cart",
+    "fields": [
+      {
+        "component": "text",
+        "name": "start-shopping-url",
+        "label": "Start Shopping URL"
+      },
+      {
+        "component": "text",
+        "name": "cart-url",
+        "label": "Cart URL"
+      },
+      {
+        "component": "text",
+        "name": "checkout-url",
+        "label": "Checkout URL"
+      },
+      {
+        "component": "boolean",
+        "name": "enable-updating-product",
+        "label": "Enable Updating Product"
+      },
+      {
+        "component": "boolean",
+        "name": "undo-remove-item",
+        "label": "Undo Remove Item"
+      }
+    ]
+  },
+  {
+    "id": "commerce-orders-list",
+    "fields": [
+      {
+        "component": "boolean",
+        "name": "minified-view",
+        "label": "Minified View"
+      }
+    ]
+  },
+  {
+    "id": "commerce-returns-list",
+    "fields": [
+      {
+        "component": "boolean",
+        "name": "minified-view",
+        "label": "Minified View"
+      }
+    ]
+  },
+  {
+    "id": "commerce-wishlist",
+    "fields": [
+      {
+        "component": "text",
+        "name": "start-shopping-url",
+        "label": "Start Shopping URL"
+      }
+    ]
+  },
+  {
+    "id": "enrichment",
+    "fields": [
+      {
+        "component": "select",
+        "name": "type",
+        "label": "Type",
+        "options": [
+          {
+            "name": "Product",
+            "value": "product"
+          },
+          {
+            "name": "Category",
+            "value": "category"
+          }
+        ]
+      },
+      {
+        "component": "text",
+        "name": "position",
+        "label": "Position"
+      }
+    ]
+  },
+  {
     "id": "fragment",
     "fields": [
       {
         "component": "text",
-        "name": "urlText",
-        "label": "Fragment URL Text"
+        "name": "fragmentUrl",
+        "label": "Fragment URL",
+        "required": true
       },
       {
         "component": "text",
-        "name": "url",
-        "label": "Fragment URL",
-        "required": true
+        "name": "fragmentUrlText",
+        "label": "Fragment URL Text"
       }
     ]
   },
@@ -173,7 +439,7 @@
       {
         "component": "text",
         "valueType": "string",
-        "name": "imageAlt",
+        "name": "alt",
         "label": "Alt",
         "value": ""
       },
@@ -187,95 +453,80 @@
     ]
   },
   {
-    "id": "quote",
+    "id": "product-details",
     "fields": [
       {
-        "component": "richtext",
-        "valueType": "string",
-        "name": "quote",
-        "label": "Quote",
+        "component": "text",
+        "name": "defaultSku",
+        "label": "Default SKU",
+        "description": "Optional: Specify a default product SKU if this is a template page"
+      }
+    ]
+  },
+  {
+    "id": "product-list-page",
+    "fields": [
+      {
+        "component": "text",
+        "name": "urlpath",
+        "label": "URL Path",
+        "description": "URL Path of the category as defined in the catalog (not CMS)"
+      },
+      {
+        "component": "number",
+        "name": "pageSize",
+        "label": "Page Size",
+        "value": 9,
+        "description": "Number of products per page (default: 9)"
+      }
+    ]
+  },
+  {
+    "id": "product-recommendations",
+    "fields": [
+      {
+        "component": "text",
+        "name": "recId",
+        "label": "Rec ID",
         "required": true
       },
       {
         "component": "text",
-        "name": "author",
-        "label": "Author",
-        "valueType": "string"
+        "name": "currentSku",
+        "label": "Current SKU"
       }
     ]
   },
   {
-    "id": "search",
+    "id": "targeted-block",
     "fields": [
-      {
-        "component": "text",
-        "name": "searchUrlText",
-        "label": "Search URL Text",
-        "valueType": "string"
-      },
-      {
-        "component": "text",
-        "valueType": "string",
-        "name": "searchUrl",
-        "label": "Search URL",
-        "required": true
-      }
-    ]
-  },
-  {
-    "id": "table",
-    "fields": [
-      {
-        "component": "richtext",
-        "name": "table",
-        "value": "",
-        "label": "Table Content"
-      }
-    ]
-  },
-  {
-    "id": "tabs-item",
-    "fields": [
-      {
-        "component": "text",
-        "name": "name",
-        "valueType": "string",
-        "label": "Tab Name"
-      },
       {
         "component": "richtext",
         "name": "content",
-        "label": "Content",
-        "valueType": "string"
-      }
-    ]
-  },
-  {
-    "id": "video",
-    "fields": [
-      {
-        "component": "boolean",
-        "name": "classes_autoplay",
-        "label": "Autoplay Video",
-        "valueType": "boolean"
+        "label": "Content"
       },
       {
         "component": "text",
-        "name": "videoUrl",
-        "label": "Video URL",
-        "valueType": "string",
-        "required": true
-      },
-      {
-        "component": "text",
-        "name": "videoUrlText",
-        "label": "Video URL Text",
+        "name": "customerGroups",
+        "label": "Customer Groups",
         "valueType": "string"
       },
       {
-        "component": "reference",
-        "name": "posterImage",
-        "label": "Poster Image",
+        "component": "text",
+        "name": "customerSegments",
+        "label": "Customer Segments",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "type",
+        "label": "Type",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "fragment",
+        "label": "Fragment",
         "valueType": "string"
       }
     ]

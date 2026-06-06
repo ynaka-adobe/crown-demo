@@ -1,0 +1,303 @@
+/* Full-bleed */
+.hero-carousel-wrapper {
+  max-width: unset;
+  padding: 0;
+  margin: 0;
+}
+
+.hero-carousel {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
+}
+
+/* ── Track ─────────────────────────────────────────── */
+.hero-carousel .carousel-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-carousel .carousel-track {
+  display: flex;
+  will-change: transform;
+  transition: transform 0.5s ease-in-out;
+}
+
+/* ── Slide ─────────────────────────────────────────── */
+.hero-carousel .carousel-slide {
+  flex: 0 0 100%;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Image ─────────────────────────────────────────── */
+.hero-carousel .slide-image {
+  width: 100%;
+  overflow: hidden;
+  aspect-ratio: 16 / 7;
+  min-height: 200px;
+}
+
+.hero-carousel .slide-image picture {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.hero-carousel .slide-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* ── Mobile dots (between image and overlay) ───────── */
+.hero-carousel .slide-dots {
+  display: flex;
+  justify-content: center;
+  gap: 0.8rem;
+  padding: 1.2rem 0;
+  background-color: rgb(0 0 0 / 75%);
+}
+
+/* ── Overlay (mobile = stacked below image) ────────── */
+.hero-carousel .slide-overlay {
+  padding: 3.2rem 2.4rem;
+  background-color: rgb(0 0 0 / 75%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.hero-carousel .slide-title {
+  font-size: 2.4rem;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+  margin: 0 0 1.2rem;
+  color: #fff;
+}
+
+.hero-carousel .slide-subtitle {
+  font-size: 2.4rem;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+  margin: 0 0 1.2rem;
+  color: #fff;
+}
+
+.hero-carousel .slide-body {
+  font-size: 1.5rem;
+  line-height: 1.5;
+  margin: 0 0 2rem;
+  color: #fff;
+}
+
+/* ── Buttons ───────────────────────────────────────── */
+.hero-carousel .slide-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.2rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-carousel .slide-btn-primary:any-link {
+  display: inline-block;
+  background-color: var(--slide-btn1-color);
+  color: #fff;
+  text-decoration: none;
+  padding: 1rem 2.8rem;
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  border: none;
+  border-radius: 9999px;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: filter 0.2s ease;
+}
+
+.hero-carousel .slide-btn-primary:hover {
+  filter: brightness(1.2);
+  color: #fff;
+  text-decoration: none;
+}
+
+.hero-carousel .slide-btn-secondary:any-link {
+  display: inline-block;
+  color: #fff;
+  text-decoration: underline;
+  font-size: 1.4rem;
+  font-weight: 600;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.hero-carousel .slide-btn-secondary:hover {
+  opacity: 0.85;
+}
+
+/* ── Arrows ────────────────────────────────────────── */
+.hero-carousel .carousel-prev,
+.hero-carousel .carousel-next {
+  display: none;
+}
+
+/* ── Desktop dots ──────────────────────────────────── */
+.hero-carousel .carousel-dots {
+  display: none;
+}
+
+/* ── Shared dot styles ─────────────────────────────── */
+.hero-carousel .carousel-dot {
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+  transition: background-color 0.2s ease;
+}
+
+.hero-carousel .carousel-dot.active {
+  background: #fff;
+}
+
+/* Desktop dots sit against white page background — use grey instead of white */
+.hero-carousel .carousel-dots .carousel-dot {
+  border-color: #ccc;
+}
+
+.hero-carousel .carousel-dots .carousel-dot.active {
+  background: #444;
+  border-color: #444;
+}
+
+/* ── Desktop ───────────────────────────────────────── */
+@media (min-width: 768px) {
+  .hero-carousel .carousel-container {
+    min-height: 400px;
+    max-height: 500px;
+  }
+
+  .hero-carousel .carousel-slide {
+    display: grid;
+    min-height: 400px;
+    max-height: 500px;
+  }
+
+  /* Image and overlay share the same grid cell */
+  .hero-carousel .slide-image,
+  .hero-carousel .slide-overlay {
+    grid-row: 1;
+    grid-column: 1;
+  }
+
+  .hero-carousel .slide-image {
+    aspect-ratio: unset;
+    min-height: unset;
+    height: 100%;
+    width: 100%;
+  }
+
+  /* Mobile dots hidden on desktop */
+  .hero-carousel .slide-dots {
+    display: none;
+  }
+
+  /* Compact floating overlay box */
+  .hero-carousel .slide-overlay {
+    z-index: 1;
+    max-width: 450px;
+    place-self: center start;
+    margin: 3.2rem;
+    padding: 3.2rem;
+    align-self: center;
+  }
+
+  .hero-carousel .slide-title,
+  .hero-carousel .slide-subtitle {
+    font-size: 2.8rem;
+  }
+
+  /* Position variants */
+  .hero-carousel .carousel-slide.position-center .slide-overlay {
+    justify-self: center;
+  }
+
+  .hero-carousel .carousel-slide.position-right .slide-overlay {
+    justify-self: end;
+  }
+
+  /* Arrows */
+  .hero-carousel .carousel-prev,
+  .hero-carousel .carousel-next {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    margin: 0;
+    z-index: 2;
+    background: rgb(0 0 0 / 45%);
+    border: none;
+    border-radius: 50%;
+    width: 4.4rem;
+    height: 4.4rem;
+    font-size: 2.8rem;
+    color: #fff;
+    cursor: pointer;
+    line-height: 1;
+    transition: background-color 0.2s ease;
+  }
+
+  .hero-carousel .carousel-prev {
+    left: 1.6rem;
+  }
+
+  .hero-carousel .carousel-next {
+    right: 1.6rem;
+  }
+
+  .hero-carousel .carousel-prev:hover,
+  .hero-carousel .carousel-next:hover {
+    background: rgb(0 0 0 / 70%);
+  }
+
+  /* Desktop dots — below carousel */
+  .hero-carousel .carousel-dots {
+    display: flex;
+    justify-content: center;
+    gap: 0.8rem;
+    padding: 1.4rem 0;
+    background: transparent;
+  }
+}
+
+@media (min-width: 1200px) {
+  .hero-carousel .carousel-container {
+    min-height: 440px;
+  }
+
+  .hero-carousel .carousel-slide {
+    min-height: 440px;
+  }
+
+  .hero-carousel .slide-overlay {
+    padding: 4rem;
+    margin: 4rem;
+  }
+
+  .hero-carousel .slide-title,
+  .hero-carousel .slide-subtitle {
+    font-size: 3.2rem;
+  }
+}

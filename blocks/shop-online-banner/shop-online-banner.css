@@ -1,0 +1,151 @@
+/* Full-bleed: break out of the section's max-width container */
+.shop-online-banner-wrapper {
+  max-width: unset;
+  padding: 0;
+  margin: 0;
+}
+
+/* Mobile-first: image on top, overlay box stacked below */
+.shop-online-banner {
+  display: flex;
+  flex-direction: column;
+}
+
+.shop-online-banner .banner-image {
+  width: 100%;
+  overflow: hidden;
+  aspect-ratio: 16 / 7;
+  min-height: 200px;
+}
+
+.shop-online-banner .banner-image picture {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.shop-online-banner .banner-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* Overlay box — dark semi-transparent on both mobile and desktop */
+.shop-online-banner .banner-content {
+  padding: 3.2rem 2.4rem;
+  background-color: rgb(0 0 0 / 75%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* Title: first text element — large, bold, white */
+.shop-online-banner .banner-title {
+  color: #fff;
+  font-size: 2.4rem;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+  margin: 0 0 1.2rem;
+}
+
+/* Body: subsequent text elements — smaller, white */
+.shop-online-banner .banner-body {
+  color: #fff;
+  font-size: 1.5rem;
+  line-height: 1.5;
+  margin: 0 0 2rem;
+}
+
+/* Button container — no extra margin needed; centering is handled by parent align-items */
+.shop-online-banner .banner-content .button-container {
+  margin: 0;
+}
+
+/* Orange CTA — pill-shaped, overrides EDS defaults */
+.shop-online-banner .banner-cta:any-link,
+.shop-online-banner .banner-cta.button:any-link {
+  display: inline-block;
+  background-color: var(--banner-btn-color);
+  color: #fff;
+  text-decoration: none;
+  padding: 1rem 2.8rem;
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  border: none;
+  border-radius: 9999px;
+  transition: background-color 0.2s ease;
+  white-space: nowrap;
+  cursor: pointer;
+  margin: 0;
+}
+
+.shop-online-banner .banner-cta:hover,
+.shop-online-banner .banner-cta.button:hover {
+  filter: brightness(1.2);
+  color: #fff;
+  text-decoration: none;
+}
+
+/* Desktop: CSS grid — compact floating overlay box over image */
+@media (min-width: 768px) {
+  .shop-online-banner {
+    display: grid;
+    min-height: 400px;
+  }
+
+  /* Both children share the same grid cell so the content box floats over the image */
+  .shop-online-banner .banner-image,
+  .shop-online-banner .banner-content {
+    grid-row: 1;
+    grid-column: 1;
+  }
+
+  .shop-online-banner .banner-image {
+    aspect-ratio: unset;
+    min-height: unset;
+    height: 100%;
+    width: 100%;
+  }
+
+  /* Compact floating box: max 450px wide, vertically centered, left-aligned by default */
+  .shop-online-banner .banner-content {
+    z-index: 1;
+    max-width: 450px;
+    place-self: center start;
+    margin: 3.2rem;
+    padding: 3.2rem;
+  }
+
+  .shop-online-banner .banner-title {
+    font-size: 2.8rem;
+  }
+
+  /* Horizontal position variants */
+  .shop-online-banner.position-center .banner-content {
+    justify-self: center;
+  }
+
+  .shop-online-banner.position-right .banner-content {
+    justify-self: end;
+  }
+}
+
+@media (min-width: 1200px) {
+  .shop-online-banner {
+    min-height: 440px;
+  }
+
+  .shop-online-banner .banner-content {
+    padding: 4rem;
+    margin: 4rem;
+  }
+
+  .shop-online-banner .banner-title {
+    font-size: 3.2rem;
+  }
+}
